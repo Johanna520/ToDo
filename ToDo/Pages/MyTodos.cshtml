@@ -1,0 +1,54 @@
+﻿@page
+@model ToDo.Pages.MyTodosModel
+@{
+    Layout = "";   
+}
+<!--
+Jag vill visa en lista med todos.
+   Deadline, Start,     Task,           Done
+   20210503, 20210317,  Clean car,
+   20210412, 20210317,  Buy groceries,  ✔
+   20210526, 20210317,  Mow the lawn,
+   20210317, 20210317,  Make dinner,    ✔
+-->
+<ul>
+
+    @foreach(var WhatTodo in Model.WhatTodos)
+     {
+
+        <li>@WhatTodo.Deadline @WhatTodo.Start @WhatTodo.Task @(WhatTodo.Done ? "✔" :  " ")</li>
+     }
+</ul>
+
+<h3>Skriv en ny todo</h3>
+<form method="post">
+    <br />
+    <label for="Deadline">When is deadline? </label>
+    <input type="text" name="Deadline" id="Deadline" />
+    <br />
+    <label for="Start">When do you start? </label>
+    <input type="text" name="Start" id="Start" />
+    <br />
+    <label for="Task">What is your task? </label>
+    <input type="text" name="Task" id="Task" />
+    <br />
+    <label for="Done">Are you done?</label>
+    <input type="checkbox" name="Done" id="Done" />
+    <br />
+    <input type="submit" />
+</form>
+
+
+<style>
+    .hlist {
+        display: flex;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+        .hlist li {
+            list-style-type: none;
+            padding: 15px;
+        }
+</style>
