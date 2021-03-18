@@ -24,16 +24,16 @@ Jag vill visa en lista med todos.
 <form method="post">
     <br />
     <label for="Deadline">When is deadline? </label>
-    <input type="text" name="Deadline" id="Deadline" />
+    <input asp-for="newWhatTodo.Deadline"/>
     <br />
     <label for="Start">When do you start? </label>
-    <input type="text" name="Start" id="Start" />
+    <input asp-for="newWhatTodo.Start" />
     <br />
     <label for="Task">What is your task? </label>
-    <input type="text" name="Task" id="Task" />
+    <input asp-for="newWhatTodo.Task" />
     <br />
     <label for="Done">Are you done?</label>
-    <input type="checkbox" name="Done" id="Done" />
+    <input asp-for="newWhatTodo.Done" />
     <br />
     <input type="submit" />
 </form>

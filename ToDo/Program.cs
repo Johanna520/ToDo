@@ -26,8 +26,9 @@ namespace ToDo
         {
             using(var scope = host.Services.CreateScope())
             { var services = scope.ServiceProvider;
-              //  var context = services.GetRequiredService<Data.TodoContext>();
-              //  DbInitializer.Initialize(context);
+                var context = services.GetRequiredService<Data.TodoDbContext>();
+              
+                context.Seed();
             }
         }
 

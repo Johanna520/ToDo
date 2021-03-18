@@ -27,8 +27,9 @@ namespace ToDo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-        //    services.AddDbContext<TodoContext>(options =>
-       //   options.UseSqlServer(Configuration.GetConnectionString("DbContext")));
+
+            services.AddDbContext<TodoDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
