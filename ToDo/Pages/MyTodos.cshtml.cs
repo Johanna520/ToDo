@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using ToDo.Data;
+
 
 
 
@@ -19,16 +19,16 @@ namespace ToDo.Pages
         public Models.WhatTodo newWhatTodo { get; set; }
 
         private readonly ILogger<ErrorModel> _logger;
-        private readonly TodoDbContext _context;
+        //private readonly TodoDbContext _context;
                 
-        public MyTodosModel(ILogger<ErrorModel> logger,
-            TodoDbContext context)
+        public MyTodosModel(ILogger<ErrorModel> logger)
+      
             
         {
-            _context = context;
+            
             _logger = logger;
-
-            WhatTodos = _context.WhatTodos.ToList();
+            WhatTodos = new List<Models.WhatTodo>();
+            //WhatTodos = _context.WhatTodos.ToList();
         }
         //här vill vi ha en referns till en todo lista
         public void OnGet()
@@ -41,8 +41,7 @@ namespace ToDo.Pages
             _logger.LogInformation("Nu fick vi en POST repost");
 
             WhatTodos.Add(newWhatTodo);
-            _context.WhatTodos.Add(newWhatTodo);
-            _context.SaveChanges();
+            
         }
 
 

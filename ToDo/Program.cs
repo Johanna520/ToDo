@@ -10,13 +10,14 @@ using Microsoft.Extensions.DependencyInjection;
 using ToDo.Models;
 using ToDo.Data;
 
+
 namespace ToDo
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-           var host =  CreateHostBuilder(args).Build();
+            var host = CreateHostBuilder(args).Build();
 
             CreateDbIfNotExists(host);
             host.Run();
@@ -24,13 +25,18 @@ namespace ToDo
 
         private static void CreateDbIfNotExists(IHost host)
         {
-            using(var scope = host.Services.CreateScope())
-            { var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<Data.TodoDbContext>();
-              
-                context.Seed();
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<ToDoContext>();
+                    context.Seed();
             }
         }
+
+
+       
+
+     
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

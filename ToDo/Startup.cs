@@ -9,8 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ToDo.Models;
-using ToDo.Data;
+
 using Microsoft.EntityFrameworkCore;
+using ToDo.Data;
 
 namespace ToDo
 {
@@ -28,8 +29,10 @@ namespace ToDo
         {
             services.AddRazorPages();
 
-            services.AddDbContext<TodoDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DbContext")));
+            services.AddDbContext<ToDoContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ToDoContext")));
+
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
